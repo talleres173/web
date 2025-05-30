@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="diseñoadmin.css">
+  <link rel="stylesheet" href="awesome/css/all.css">
+  <title>Talleres extracurriculares </title>
+  <style>
+    #btnEnter { display: none; }
+  </style>
+</head>
+<body>
+
+  <img src="imagen1.JPG" class="imagen" alt="Imagen de bienvenida">
+
+  <div class="formulario">
+    <h1>Inicio de sesión</h1>
+    
+    <form method="post" action="registrar3.php" onsubmit="mostrarBotonEnter(event)">
+
+      <div class="usuario">
+        <label for="usuario">usuario</label>
+        <input type="text" id="usuario" name="usuario" required>
+      </div>
+
+      <div class="contraseña">
+        <label for="contraseña">Contraseña</label>
+        <input type="password" id="contraseña" name="contraseña" required>
+      </div>
+
+      <div class="confirmacion">
+        <label for="confirmacion">confirmacion</label>
+        <input type="password" id="confirmacion" name="confirmacion" required>
+      </div>
+
+      <div class="recordar">
+        <p>Recuerda que si no eres administrador no podras ingresar</p>
+      </div>
+
+      
+<center>
+      <button type="submit">Ingresar</button>
+      <button type="button" id="btnEnter" onclick="window.location.href='conoce.html'">Enter</button>
+     
+
+    </form>
+  </div>
+
+  <script>
+    function mostrarBotonEnter(event) {
+      event.preventDefault();
+      // Envía el formulario vía AJAX o puedes llamar directamente registrar.php si prefieres
+      fetch('registrar3.php', {
+        method: 'POST',
+        body: new FormData(event.target)
+      })
+      .then(response => response.text())
+      .then(text => {
+        console.log(text);
+        document.getElementById('btnEnter').style.display = 'inline-block';
+        alert('¡Ingreso exitoso! Ahora puedes presionar "Enter".');
+      })
+      .catch(err => console.error(err));
+    }
+  </script>
+
+</body>
+</html>

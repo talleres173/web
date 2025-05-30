@@ -1,0 +1,66 @@
+nav
+{
+    background-color: #FF10C2;
+    padding: 20px;
+}
+
+body
+{
+  
+  background: linear-gradient(150deg,black, #FF8FF0);
+  height:100vh;
+}
+ul
+{
+    list-style: none;
+
+    display: inline-flex;
+}
+
+a 
+{
+    color: black;
+    padding: 15px;
+
+    text-decoration: none;
+    text-transform: uppercase;/*mayusculas a minusculas*/
+    background-color: white;
+}
+
+
+a:hover/*cuando pase el mouse sobre el enlase puede cambiar el fondo*/
+{
+    background-color: #FCC7FF;
+
+}
+h1
+{
+    background-color: #FF6FEE;
+    font-size: 50px;
+    text-align: center;
+}
+
+.fondocolumnas1 {
+   padding: 25px;
+    background-color: #FF9DF6;
+    border-radius: 30px;
+    margin: 10px;
+    margin-top: 10px;
+    width: 25%;
+    text-align: left;
+}
+
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+}
+.img
+{
+    width: 350px;
+    height: 350px;
+}
