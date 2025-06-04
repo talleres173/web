@@ -4,25 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="diseñoingre.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="awesome/css/all.css">
+  <link rel="stylesheet" href="diseñoingre.css">
   <title>Talleres extracurriculares</title>
-  <style>
-    #btnEnter { display: none; }
-  </style>
 </head>
+
 <body>
 
   <img src="imagen1.JPG" class="imagen" alt="Imagen de bienvenida">
 
   <div class="formulario">
     <h1>Inicio de sesión</h1>
-    
-    <form method="post" action="registrar.php" onsubmit="mostrarBotonEnter(event)">
 
+    <form method="post" action="registrar.php" onsubmit="mostrarBotonEnter(event)">
       <div class="usuario">
-        <label for="usuario">Matricula</label>
+        <label for="usuario">Matrícula</label>
         <input type="text" id="usuario" name="usuario" required>
       </div>
 
@@ -31,58 +28,54 @@
         <input type="password" id="contraseña" name="contraseña" required>
       </div>
 
-      <div class="recordar">
-        <p>Recuerda que tu contraseña es el número de tu matrícula</p>
-      </div>
+      <p class="text-muted small">Recuerda que tu contraseña es el número de tu matrícula</p>
 
-      
-<center>
       <button type="submit">Ingresar</button>
       <button type="button" id="btnEnter" onclick="window.location.href='conoce.html'">Enter</button>
 
-      <div class="recordar">
-        <p>Recuerda que si no tienes cuenta te tienes que registrar</p>
+      <p class="text-muted small">¿No tienes cuenta? Regístrate</p>
+
+      <div class="redes">
+        <a href="iniciar.html">Iniciar sesión</a> 
+
       </div>
-   
-      <a href='iniciar.html'>Iniciar sesion</a>
-     <p> <a href='admin.html'>Administrador</a><p> </center>
-
-     
-
+       <p class="text-muted small">¿Eres administrador? Ingresa</p>
+       <div>
+          <a href="admin.html">Administrador</a>
+      </div>
     </form>
   </div>
 
   <script>
-function mostrarBotonEnter(event) {
-  event.preventDefault();
+    function mostrarBotonEnter(event) {
+      event.preventDefault();
 
-  fetch('registrar.php', {
-    method: 'POST',
-    body: new FormData(event.target)
-  })
-  .then(response => response.text())
-  .then(text => {
-    console.log("Respuesta del servidor:", text);
+      fetch('registrar.php', {
+        method: 'POST',
+        body: new FormData(event.target)
+      })
+      .then(response => response.text())
+      .then(text => {
+        console.log("Respuesta del servidor:", text);
 
-    if (text === "REGISTRADO_NUEVO") {
-      alert("¡Registro exitoso! Bienvenido.");
-      document.getElementById('btnEnter').style.display = 'inline-block';
-    } else if (text === "YA_REGISTRADO") {
-      alert("Ya estás registrado, por favor ingresa con la contraseña correcta.");
-    } else if (text === "INGRESO_EXITOSO") {
-      alert("¡Ingreso exitoso!");
-      document.getElementById('btnEnter').style.display = 'inline-block';
-    } else {
-      // Aquí cae si no coincide ningún mensaje anterior
-      alert("Ocurrió un error desconocido: " + text);
+        if (text === "REGISTRADO_NUEVO") {
+          alert("¡Registro exitoso! Bienvenido.");
+          document.getElementById('btnEnter').style.display = 'inline-block';
+        } else if (text === "YA_REGISTRADO") {
+          alert("Ya estás registrado, por favor ingresa con la contraseña correcta.");
+        } else if (text === "INGRESO_EXITOSO") {
+          alert("¡Ingreso exitoso!");
+          document.getElementById('btnEnter').style.display = 'inline-block';
+        } else {
+          alert("Ocurrió un error desconocido: " + text);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error al conectar con el servidor.");
+      });
     }
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Error al conectar con el servidor.");
-  });
-}
-</script>
+  </script>
 
 </body>
 </html>
