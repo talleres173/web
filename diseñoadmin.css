@@ -1,100 +1,124 @@
-.imagen
+.imagen 
 {
-
-	width: 98%;
-	height: 35%;
-	font-size: 10px;
-	margin-left: 10px;
-	padding: 10px;
-	border-radius: 20px;
+  width: 98%;
+  height: auto;
+  max-height: 270px;
+  font-size: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 20px;
 }
 
-
-body
+body 
 {
-	margin: 0;
-	padding: 0;
-
-	background: linear-gradient(150deg, #6C3483, #58d68D);
-	height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(150deg, #6C3483, #58d68D);
+  min-height: 100vh;
 }
 
-.formulario
+.formulario 
 {
-	position: absolute;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 400px;
-	background: white;
-	border-radius: 10px;
-}
-.formulario h1
-{
-	text-align: center;
-	padding: 0 0 20px 0;
-	border-bottom: 1px solid silver;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  background: white;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.formulario from
+.formulario h1 
 {
-	padding: 0 40px;
-	box-sizing: border-box;
-
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid silver;
+  padding-bottom: 10px;
 }
 
-form .usuario
+form 
 {
-	position: relative;
-	border-bottom: 2px solid#CCCCCC;
-	margin: 30px 0;
-
+  box-sizing: border-box;
 }
 
-.usuario inpu
+form .usuario,
+form .contraseña 
 {
-	width: 100%;
-	padding: 0 5px;
-	height: 40px;
-	font-size: 16px;
-	border: none;
-	background: none;
-	outline: none;
+  margin-bottom: 20px;
 }
 
-
-button
+.usuario input,
+.contraseña input 
 {
-	border: 0;
-
-	background-image: linear-gradient(150deg, #38B606,#59EA1F, #A7C7E7);
-	border-radius: 8px;
-	color: #000000;
-	display: flex;
-	font-size: 19px;
-	padding: 4px;
-	cursor: pointer;
-	transition: .3s;
-
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: none;
+  outline: none;
 }
 
-button span
+button 
 {
-	background-color: #111111;
-	padding: 16px 24px;
-	border-radius: 6px;
-	transition: .3s;
+  width: 100%;
+  border: 0;
+  background-image: linear-gradient(150deg, #38B606, #59EA1F, #A7C7E7);
+  border-radius: 8px;
+  color: #000;
+  font-size: 18px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 10px;
 }
 
-button hover span
+button:hover 
 {
-	background: none;
-}
-button:active
-{
-	transform: scale(0.9);
-
+  opacity: 0.9;
 }
 
+button:active 
+{
+  transform: scale(0.95);
+}
 
+.recordar 
+{
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
+a 
+{
+  display: inline-block;
+  margin-top: 5px;
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover 
+{
+  text-decoration: underline;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+  .formulario {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

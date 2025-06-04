@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="diseñoadmin.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="awesome/css/all.css">
-  <title>Talleres extracurriculares </title>
+  <link rel="stylesheet" href="diseñoadmin.css">
+  <title>Talleres extracurriculares</title>
+
   <style>
     #btnEnter { display: none; }
   </style>
 </head>
+
 <body>
 
   <img src="imagen1.JPG" class="imagen" alt="Imagen de bienvenida">
 
   <div class="formulario">
-    <h1>Inicio de sesión</h1>
-    
+    <h1>Inicio de sesión - Admin</h1>
+
     <form method="post" action="registrar3.php" onsubmit="mostrarBotonEnter(event)">
 
       <div class="usuario">
-        <label for="usuario">usuario</label>
+        <label for="usuario">Usuario</label>
         <input type="text" id="usuario" name="usuario" required>
       </div>
 
@@ -31,19 +33,14 @@
       </div>
 
       <div class="confirmacion">
-        <label for="confirmacion">confirmacion</label>
+        <label for="confirmacion">Confirmación</label>
         <input type="password" id="confirmacion" name="confirmacion" required>
       </div>
 
-      <div class="recordar">
-        <p>Recuerda que si no eres administrador no podras ingresar</p>
-      </div>
+      <p class="text-muted small">Recuerda que si no eres administrador no podrás ingresar</p>
 
-      
-<center>
       <button type="submit">Ingresar</button>
       <button type="button" id="btnEnter" onclick="window.location.href='conoce.html'">Enter</button>
-     
 
     </form>
   </div>
@@ -51,7 +48,7 @@
   <script>
     function mostrarBotonEnter(event) {
       event.preventDefault();
-      // Envía el formulario vía AJAX o puedes llamar directamente registrar.php si prefieres
+
       fetch('registrar3.php', {
         method: 'POST',
         body: new FormData(event.target)
@@ -59,10 +56,20 @@
       .then(response => response.text())
       .then(text => {
         console.log(text);
-        document.getElementById('btnEnter').style.display = 'inline-block';
-        alert('¡Ingreso exitoso! Ahora puedes presionar "Enter".');
+
+        if (text === "ACCESO_ADMIN") {
+          alert("¡Acceso exitoso como administrador!");
+          document.getElementById('btnEnter').style.display = 'inline-block';
+        } else if (text === "CREDENCIALES_INVALIDAS") {
+          alert("Usuario o contraseña incorrectos.");
+        } else {
+          alert("Error inesperado: " + text);
+        }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        alert("Error al conectar con el servidor.");
+      });
     }
   </script>
 
