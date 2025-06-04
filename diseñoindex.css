@@ -1,20 +1,23 @@
-.imagen {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 15%;
-    justify-content: center;
+
+body
+{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(150deg,black, #90EE90,black);
+    height: 260vh;
 }
+
 h1
 {
     background-color: #BFFFB8;
-    font-size: 50px;
+    font-size: 70px;
 
     text-align: center;
 }
 
 .imagen2 {
     width: 50%;
-    margin-top: 20%;
+    
     height: 60%;
     border-radius: 15px;
     border-style: solid;
