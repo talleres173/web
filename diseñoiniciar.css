@@ -1,92 +1,111 @@
-.imagen
-{
-
-	width: 98%;
-	height: 35%;
-	font-size: 10px;
-	margin-left: 10px;
-	padding: 10px;
-	border-radius: 20px;
+/* Imagen de bienvenida */
+.imagen {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 20px;
+  display: block;
 }
 
-body
-{
-	margin: 0;
-	padding: 0;
-	background: linear-gradient(150deg, #6C3483, #58d68D);
-	height: 100vh;
+/* Fondo general */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(150deg, #6C3483, #58d68D);
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-h1
-{
-	text-align: center;
-	font-size: 10;
-	color: #000000;
+/* Título */
+h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 20px;
 }
 
-
-.contenedor .cajas
-{
-	height: 30px;
-	width: 100%;
+/* Contenedor del formulario */
+.formulario {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
 }
 
-
-button
-{
-	border: 0;
-
-	background-image: linear-gradient(150deg,#9F90F8,#7663DE, #5846B8);
-	border-radius: 8px;
-	color: #000000;
-	display: flex;
-	font-size: 19px;
-	padding: 4px;
-	cursor: pointer;
-	transition: .3s;
-
+/* Etiquetas e inputs */
+.cajas {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
-button span
-{
-	background-color: #111111;
-	padding: 16px 24px;
-	border-radius: 6px;
-	transition: .3s;
+.cajas label {
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-button hover span
-{
-	background: none;
-}
-button:active
-{
-	transform: scale(0.9);
-
-}
-
-
-
-.formulario
-{
-	position: absolute;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 600px;
-	background: white;
-	border-radius: 10px;
-}
-.formulario h1
-{
-	text-align: center;
-	padding: 0 0 20px 0;
-	border-bottom: 1px solid silver;
+.cajas input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.formulario from
-{
-	padding: 0 30px;
-	box-sizing: border-box;
+/* Botones */
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
 
+.botones button {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  background-image: linear-gradient(150deg, #9F90F8, #7663DE, #5846B8);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.botones button:hover {
+  background-image: linear-gradient(150deg, #7663DE, #9F90F8);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* RESPONSIVE: Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+  .formulario {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .cajas input {
+    font-size: 14px;
+  }
+
+  .botones button {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
