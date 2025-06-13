@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil CONALEP</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body background="imagen2.PNG" class="imagen">
+     <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+    <ul id="menu">
+      <li><a href="index.html">Sobre Nosotros</a></li>
+      <li><a href="conoce.html">Nuestros Talleres</a></li>
+      <li><a href="inscripciones.html">Proceso de inscripción</a></li>
+      <li><a href="normas.html">Normas y Reglas de los Talleres</a></li>
+      <li><a href="encuesta.html">Encuesta</a></li>
+      <li><a href="perf.html">perfil</a></li>
+      <li><a href="index.html">Cerrar sesion</a></li>
+    </ul>
+  </nav>
+   <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+        <div class="perfil-conalep">
+        <div class="perfil-header">
+            <img src="logo.jpeg" class="logo-conalep" alt="Logo Conalep">
+            <span class="educacion">EDUCACIÓN</span>
+        </div>
+        <div class="perfil-main">
+            <div class="perfil-foto">
+                <img id="fotoUsuario" src="avatar-default.png" alt="Foto de perfil">
+                <input type="file" id="inputFoto" accept="image/*" style="display:none;">
+                <div class="foto-botones">
+                    <button onclick="document.getElementById('inputFoto').click()">Subir foto</button>
+                    <button id="btnQuitarFoto">Quitar foto</button>
+                </div>
+            </div>
+            <div class="perfil-info">
+                <h2>RODRIGUEZ ORILLO<br><span>MHELISSA MARGARITA</span></h2>
+                <p class="matricula">221730126-2</p>
+                <ul>
+                    <li><span>Plantel:</span> Cuautla</li>
+                    <li><span>Sexo:</span> M</li>
+                    <li><span>Carrera:</span> Profesional Técnico-Bachiller en Informática</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="perfil.js"></script>
+</body>
+</html>

@@ -1,6 +1,12 @@
+.imagen {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 15%;
+    justify-content: center;
+}
 
 .imagen1 {
-    width:80%;
+    width:60%;
     height: 90%;
     display: flex;
     
@@ -9,7 +15,7 @@
 nav {
   background-color: #6dc36d;
   padding: 20px;
- 
+  margin-top: 15%;
 }
 
 
@@ -50,7 +56,6 @@ a:hover {
   background-color: #C8FFC8;
   color: black;
 }
-
 /* Estilo responsivo para móviles */
 @media screen and (max-width: 768px) {
   ul {
@@ -71,14 +76,14 @@ a:hover {
 
 h1
 {
-    background-color: #BFFFB8;
+    background-color: #C0F8FF;
     font-size: 50px;
     text-align: center;
 }
 
 .fondocolumnas1 {
    padding: 25px;
-    background-color: #6dc36d;
+    background-color: #86B3FF;
     border-radius: 30px;
     margin: 15px;
     margin-top: 25%;

@@ -1,0 +1,112 @@
+.imagen {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 15%;
+    justify-content: center;
+}
+nav {
+  background-color: #6dc36d;
+  padding: 20px;
+  margin-top: 15%;
+}
+
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 5px;
+}
+
+a {
+ 
+  padding: 10px 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: lightgreen;
+  display: block;
+  color: black;
+}
+
+a:hover {
+  background-color: #C8FFC8;
+  color: black;
+}
+
+/* Estilo responsivo para móviles */
+@media screen and (max-width: 768px) {
+  ul {
+    flex-direction: column;
+    display: none;
+  }
+
+  ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+
+.encuesta {
+  background: white;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.encuesta h2 {
+  text-align: center;
+}
+
+.encuesta label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.encuesta input[type="text"],
+.encuesta input[type="number"],
+.encuesta select,
+.encuesta textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.encuesta input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.encuesta input[type="submit"]:hover {
+  background-color: #005fa3;
+}

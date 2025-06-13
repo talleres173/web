@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-  <img src="imagen1.JPG" class="imagen" alt="Imagen de bienvenida" />
+  <img src="img/imagen1.JPG" class="imagen" alt="Imagen de bienvenida" />
 
   <div class="formulario">
     <h1>Introduzca los datos</h1>
@@ -74,7 +74,7 @@
       const form = event.target;
       const formData = new FormData(form);
 
-      fetch('registrar2.php', {
+      fetch('registrar.php', {
         method: 'POST',
         body: formData
       })

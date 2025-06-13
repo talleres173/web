@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +11,7 @@
 
 <body>
 
-  <img src="imagen1.JPG" class="imagen" alt="Imagen de bienvenida">
+  <img src="img/imagen1.JPG" class="imagen" alt="Imagen de bienvenida">
 
   <div class="formulario">
     <h1>Inicio de sesión</h1>
@@ -49,33 +48,28 @@
   <script>
     function mostrarBotonEnter(event) {
       event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
 
       fetch('registrar.php', {
         method: 'POST',
-        body: new FormData(event.target)
+        body: formData
       })
       .then(response => response.text())
       .then(text => {
-        console.log("Respuesta del servidor:", text);
-
-        if (text === "REGISTRADO_NUEVO") {
-          alert("¡Registro exitoso! Bienvenido.");
+        console.log('Respuesta del servidor:', text);
+        if (text.toLowerCase().includes('ok')) {
           document.getElementById('btnEnter').style.display = 'inline-block';
-        } else if (text === "YA_REGISTRADO") {
-          alert("Ya estás registrado, por favor ingresa con la contraseña correcta.");
-        } else if (text === "INGRESO_EXITOSO") {
-          alert("¡Ingreso exitoso!");
-          document.getElementById('btnEnter').style.display = 'inline-block';
+          alert('¡Ya esta registrado! Ahora puedes presionar "Enter".');
         } else {
-          alert("Ocurrió un error desconocido: " + text);
+          alert('Error al registrar: ' + text);
         }
       })
-      .catch(err => {
-        console.error(err);
-        alert("Error al conectar con el servidor.");
+      .catch(error => {
+        console.error('Error en fetch:', error);
+        alert('Error al enviar el formulario.');
       });
     }
   </script>
-
 </body>
 </html>

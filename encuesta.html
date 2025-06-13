@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="diseñoen.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="awesome/css/all.css">
+  <title>Encuesta de satisfacion</title>
+</head>
+<body background="img/imagen2.PNG" class="imagen">
+ <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+    <ul id="menu">
+      <li><a href="index.html">Sobre Nosotros</a></li>
+      <li><a href="conoce.html">Nuestros Talleres</a></li>
+      <li><a href="inscripciones.html">Proceso de inscripción</a></li>
+      <li><a href="normas.html">Normas y Reglas de los Talleres</a></li>
+      <li><a href="encuesta.html">Encuesta</a></li>
+      <li><a href="perfil.html">perfil</a></li>
+      <li><a href="index.html">Cerrar sesion</a></li>
+    </ul>
+  </nav>
+
+   <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+
+  <form class="encuesta" action="#" method="post">
+    <h2>Encuesta de Satisfacción</h2>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="matricula">Matricula:</label>
+    <input type="text" id="matricula" name="matricula" required>
+
+    <label>1.-¿Cómo calificarías el diseño general del sitio web?</label>
+    <input type="radio" name="p1" value="Excelente" required> Excelente<br>
+    <input type="radio" name="p1" value="Bueno" required> Bueno<br>
+    <input type="radio" name="p1" value="Regular" required> Regular<br>
+    <input type="radio" name="p1" value="Malo" required> Malo<br>
+
+    <label>2.-¿La navegación por el sitio fue sencilla?</label>
+    <input type="radio" name="p2" value="Si" required> Si<br>
+    <input type="radio" name="p2" value="No" required> No<br>
+    
+    <label>3.-¿El contenido fue claro y útil?</label>
+    <input type="radio" name="p3" value="Si" required> Si,fue muy claro<br>
+    <input type="radio" name="p3" value="No" required> No, fue muy claro<br>
+
+    <label>4.-¿Encontraste errores o enlaces rotos en la página?</label>
+    <input type="radio" name="p4" value="Si" required> Si <br>
+    <input type="radio" name="p4" value="No" required> No <br>
+
+    <label>5.-¿El sitio se adapta bien a tu dispositivo (móvil, tablet, PC)?</label>
+    <input type="radio" name="p5" value="Si" required> Si <br>
+    <input type="radio" name="p5" value="No" required> No <br>
+
+    <label>6.-¿Los botones y enlaces funcionaron correctamente?</label>
+    <input type="radio" name="p6" value="Si" required> Si <br>
+    <input type="radio" name="p6" value="No" required> No <br>
+    
+    <label>7.- ¿Los colores utilizados fueron agradables a la vista?</label>
+    <input type="radio" name="p7" value="Si" required> Si <br>
+    <input type="radio" name="p7" value="mas" required> Mas o menos <br>
+    <input type="radio" name="p7" value="No" required> No <br>
+
+    <label>8.- ¿Te gustaría que el sitio tuviera un buscador interno?</label>
+    <input type="radio" name="p8" value="Si" required> Si <br>
+    <input type="radio" name="p8" value="No" required> No <br>
+
+    <label>9.- ¿La informacion te parecio util y clara?</label>
+    <input type="radio" name="p9" value="Si" required> Si <br>
+    <input type="radio" name="p9" value="No" required> No <br>
+
+    <label>10.- ¿Hay algo que no te haya gustado del sitio?</label>
+    <input type="radio" name="p10" value="Excelente" required> Su diseño<br>
+    <input type="radio" name="p10" value="Bueno" required> Su informacion<br>
+    <input type="radio" name="p10" value="Regular" required> Todo me gusto<br>
+   
+    <label for="sugerencias">Sugerencias o comentarios:</label>
+    <textarea id="sugerencias" name="sugerencias" rows="4"></textarea>
+
+    <input type="submit" value="Enviar Encuesta">
+  </form>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.querySelector('.encuesta').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita el envío normal
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Obtener valores
+    const nombre = document.getElementById("nombre").value;
+    const matricula = document.getElementById("matricula").value;
+    const sugerencias = document.getElementById("sugerencias").value;
+
+    // Función para obtener respuesta seleccionada por pregunta
+    const obtenerRespuesta = (name) => {
+      const seleccion = document.querySelector(`input[name="${name}"]:checked`);
+      return seleccion ? seleccion.value : "Sin respuesta";
+    };
+
+    // Construir contenido del PDF
+    let contenido = `
+Nombre: ${nombre}
+Matrícula: ${matricula}
+
+1. ¿Cómo calificarías el diseño general del sitio web?
+ ${obtenerRespuesta('p1')}
+
+2. ¿La navegación por el sitio fue sencilla?
+${obtenerRespuesta('p2')}
+
+3. ¿El contenido fue claro y útil?
+ ${obtenerRespuesta('p3')}
+
+4. ¿Encontraste errores o enlaces rotos en la página?
+ ${obtenerRespuesta('p4')}
+
+5. ¿El sitio se adapta bien a tu dispositivo?
+ ${obtenerRespuesta('p5')}
+
+6. ¿Los botones y enlaces funcionaron correctamente?
+ ${obtenerRespuesta('p6')}
+
+7. ¿Los colores fueron agradables a la vista?
+${obtenerRespuesta('p7')}
+
+8. ¿Te gustaría que el sitio tuviera buscador?
+${obtenerRespuesta('p8')}
+
+9. ¿La información fue útil y clara?
+ ${obtenerRespuesta('p9')}
+
+10. ¿Qué no te gustó del sitio?
+ ${obtenerRespuesta('p10')}
+
+Sugerencias o comentarios:
+${sugerencias}
+`;
+
+    // Agregar texto al PDF
+    doc.setFontSize(12);
+    doc.text(contenido, 10, 10, { maxWidth: 190 });
+
+    // Descargar PDF
+    doc.save(`Encuesta_${nombre}.pdf`);
+  });
+</script>
+
+
+</body>
+</html>
