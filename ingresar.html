@@ -16,7 +16,7 @@
   <div class="formulario">
     <h1>Inicio de sesión</h1>
 
-    <form onsubmit="mostrarBotonEnter(event)">
+    <form onsubmit="validarIngreso(event)">
       <div class="usuario">
         <label for="usuario">Matrícula</label>
         <input type="text" id="usuario" name="usuario" required>
@@ -30,7 +30,6 @@
       <p class="text-muted small">Recuerda que tu contraseña es el número de tu matrícula</p>
 
       <button type="submit">Ingresar</button>
-      <button type="button" id="btnEnter" onclick="window.location.href='conoce.html'" style="display: none;">Enter</button>
 
       <p class="text-muted small">¿No tienes cuenta? Regístrate</p>
 
@@ -46,19 +45,17 @@
   </div>
 
   <script>
-    function mostrarBotonEnter(event) {
+    function validarIngreso(event) {
       event.preventDefault();
 
       const usuario = document.getElementById('usuario').value;
       const contraseña = document.getElementById('contraseña').value;
 
-      const contraseñaGuardada = localStorage.getItem(usuario);
-
-      if (contraseñaGuardada && contraseñaGuardada === contraseña) {
-        alert("Inicio de sesión exitoso");
-        document.getElementById('btnEnter').style.display = 'inline-block';
+      if (usuario === contraseña) {
+        alert("Ingreso exitoso");
+        window.location.href = "conoce.html"; // Redirige si es correcto
       } else {
-        alert("Matrícula o contraseña incorrecta");
+        alert("Matrícula y contraseña no coinciden");
       }
     }
   </script>
