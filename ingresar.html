@@ -16,7 +16,7 @@
   <div class="formulario">
     <h1>Inicio de sesión</h1>
 
-    <form method="post" action="registrar.php" onsubmit="mostrarBotonEnter(event)">
+    <form onsubmit="mostrarBotonEnter(event)">
       <div class="usuario">
         <label for="usuario">Matrícula</label>
         <input type="text" id="usuario" name="usuario" required>
@@ -24,23 +24,23 @@
 
       <div class="contraseña">
         <label for="contraseña">Contraseña</label>
-        <input type="password" id="contraseña" name="contraseña" required>
+        <input type="password" id="contraseña" required>
       </div>
 
       <p class="text-muted small">Recuerda que tu contraseña es el número de tu matrícula</p>
 
       <button type="submit">Ingresar</button>
-      <button type="button" id="btnEnter" onclick="window.location.href='conoce.html'">Enter</button>
+      <button type="button" id="btnEnter" onclick="window.location.href='conoce.html'" style="display: none;">Enter</button>
 
       <p class="text-muted small">¿No tienes cuenta? Regístrate</p>
 
       <div class="redes">
-        <a href="iniciar.html">Iniciar sesión</a> 
-
+        <a href="registro.html">Registrarse</a>
       </div>
-       <p class="text-muted small">¿Eres administrador? Ingresa</p>
-       <div>
-          <a href="admin.html">Administrador</a>
+
+      <p class="text-muted small">¿Eres administrador? Ingresa</p>
+      <div>
+        <a href="admin.html">Administrador</a>
       </div>
     </form>
   </div>
@@ -48,28 +48,20 @@
   <script>
     function mostrarBotonEnter(event) {
       event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
 
-      fetch('registrar.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.text())
-      .then(text => {
-        console.log('Respuesta del servidor:', text);
-        if (text.toLowerCase().includes('ok')) {
-          document.getElementById('btnEnter').style.display = 'inline-block';
-          alert('¡Ya esta registrado! Ahora puedes presionar "Enter".');
-        } else {
-          alert('Error al registrar: ' + text);
-        }
-      })
-      .catch(error => {
-        console.error('Error en fetch:', error);
-        alert('Error al enviar el formulario.');
-      });
+      const usuario = document.getElementById('usuario').value;
+      const contraseña = document.getElementById('contraseña').value;
+
+      const contraseñaGuardada = localStorage.getItem(usuario);
+
+      if (contraseñaGuardada && contraseñaGuardada === contraseña) {
+        alert("Inicio de sesión exitoso");
+        document.getElementById('btnEnter').style.display = 'inline-block';
+      } else {
+        alert("Matrícula o contraseña incorrecta");
+      }
     }
   </script>
+
 </body>
 </html>
